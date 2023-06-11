@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert" style="font-size: 30px;text-align: center;">
+                   <b>SIMPLE CRUD OPERATION</b> 
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container"  >
+        <div class="row">
+            <div class="col-md-12" >
+                <form method="POST"     class="p-3 shadow">
+                {% csrf_token %}
+                <div class="form-group" style=" padding-top: 30px;">
+                    <label for="">SL NO:</label>
+                    <input type="number" class="form-control" name="slno" id="" aria-describedby="emailHelp" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Item name:</label>
+                    <input type="text" class="form-control" name="itemname" id="" placeholder="">
+                  </div>
+                  <div class="form-group" style="padding-bottom: 30px;">
+                      <label for="">Description:</label>
+                      <input type="text" class="form-control" name="desc" id="" placeholder="">
+                    </div>
+                  <button type="submit" class="btn btn-success">Create</button>
+                </form>
+                <!-- <div class="form-group">
+                    <h6>SL.NO:</h6>
+                    <input type="number" name="task" class="form-control"  required >
+    
+                </div><br>
+                    <div class="form-group">
+                        <h6>Item Name</h6>
+                        <input type="text" name="priority" class="form-control">
+                    </div><br>
+                    <div class="form-group">
+                        <h6>Description</h6>
+                        <input type="text" name="desc" class="form-control" >
+                    </div><br>
+                    <button type="button" class="btn btn-success">create</button> -->
+                
+                   
+                <!-- </form> -->
+            </div>
+        </div>
+</div>
+<div>
+ <div>
+<div class="container">
+
+ <div class="row">
+     <div class="col-md">
+         <h6>#</h6>
+ 
+      </div>
+      <div class="col-md">
+         <h6>Item Name</h6>
+ 
+      </div>
+      <div class="col-md">
+         <h6>Description</h6>
+ 
+      </div>
+      <div class="col-md">
+         <h6>Action</h6>
+         
+         
+      </div>
+             
+ </div>
+</div>
+</div>
+</div>
+<div class="container">
+{% for i in task1 %}
+<div class="row mt-3">
+ <div class="col-md">
+     <h6>{{i.slno}}</h6>
+
+  </div>
+  <div class="col-md">
+     <h6>{{i.item_name}}</h6>
+
+  </div>
+  <div class="col-md">
+     <h6>{{i.desc}}</h6>
+
+  </div>
+  <div class="col-md">
+     
+     <a type="button" class="btn btn-warning" href="{% url 'update' i.id %}">Update</a>
+     <a type="button" class="btn btn-danger" href="{% url 'delete' i.id %}">Delete</a>
+     
+  </div>
+         
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}   
+
+
